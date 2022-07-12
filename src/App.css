@@ -2,12 +2,20 @@
     background-color: #F21D44;
 }
 
+.main-red-text {
+    color: #F21D44;
+}
+
 .off-red {
     background-color: #FDCDC1;
 }
 
 .main-yellow {
     background-color: #f8d257;
+}
+
+.main-yellow-text {
+    color: #f8d257;
 }
 
 .off-yellow {
@@ -18,12 +26,20 @@
     background-color: #04A454;
 }
 
+.main-green-text {
+    color: #04A454;
+}
+
 .off-green {
     background-color: #CCE2D0;
 }
 
 .main-blue {
     background-color: #0861A5;
+}
+
+.main-blue-text {
+    color: #0861A5;
 }
 .off-blue {
     background-color: #C1CCE7;
@@ -52,4 +68,6 @@
     text-align: center;
     background-color: rgba(255, 255, 255, 0.637);
     margin: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
 }

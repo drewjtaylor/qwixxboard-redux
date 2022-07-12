@@ -1,9 +1,11 @@
 import React from 'react'
 
 const NumberBox = ({value, display}) => {
-  return (
-    <div className='number-box-square'>{value}</div>
-  )
+  if (!value) {
+    return <div className='number-box-square'>{display}</div>
+  } else {
+    return <div className='number-box-square'>X</div>
+  }
 }
 
 export default NumberBox
