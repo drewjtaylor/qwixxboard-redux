@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+It also uses the Redux template.
+
 ## What is Qwixx?
 
 Qwixx is a dice-rolling game my family and friends like to play. Unfortunately, the scoreboards that came with the game get permanent marks too easily, and the only app I could find on Google Play is in another language. So, here I am making a version in English!

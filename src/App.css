@@ -1,39 +1,55 @@
-.App {
-  text-align: center;
+.main-red {
+    background-color: #F21D44;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.off-red {
+    background-color: #FDCDC1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+.main-yellow {
+    background-color: #f8d257;
 }
 
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.off-yellow {
+    background-color: #FDEEC9;
 }
 
-.App-link {
-  color: rgb(112, 76, 182);
+.main-green {
+    background-color: #04A454;
 }
 
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+.off-green {
+    background-color: #CCE2D0;
+}
+
+.main-blue {
+    background-color: #0861A5;
+}
+.off-blue {
+    background-color: #C1CCE7;
+}
+
+.dark-gray-bg {
+    background-color: #8C8D90;
+}
+
+.dark-gray-text {
+    color: #8C8D90;
+}
+
+.medium-gray {
+    color: #B6B6B7;
+}
+
+.light-gray-bg {
+    background-color: #E9E6E8;
+}
+
+.number-box-square {
+    height: 3em;
+    line-height: 3em;
+    width: 3em;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.637);
+    margin: 5px;
 }
