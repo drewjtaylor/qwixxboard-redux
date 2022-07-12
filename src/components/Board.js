@@ -3,7 +3,16 @@ import { Container, Col, Row } from "react-bootstrap";
 import NumberBox from "./NumberBox";
 import TotalsBox from "./TotalsBox";
 
+
+import { useSelector, useDispatch } from "react-redux";
+import { testToggler } from "../utils/scoreSlice";
+
 const Board = () => {
+    const state = useSelector((state) => state);
+    const dispatch = useDispatch();
+    
+    console.log(JSON.stringify(state))
+    
     const [row1box1, setrow1box1] = useState(0);
     const [row1box2, setrow1box2] = useState(0);
     const [row1box3, setrow1box3] = useState(0);
@@ -137,8 +146,8 @@ const Board = () => {
     <Container className="light-gray-bg">
       <Row className="main-red p-2">
         <Col>
-            <div onClick={() => toggler(row1box1, setrow1box1)} className='main-red-text'>
-                <NumberBox value={row1box1} display="2"/>
+            <div onClick={() => dispatch(testToggler())} className='main-red-text'>
+                <NumberBox value={state.score.row1[0]} display={state.score.row1[0]}/>
             </div>
         </Col>
         <Col>
