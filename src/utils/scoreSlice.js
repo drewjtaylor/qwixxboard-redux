@@ -12,16 +12,24 @@ export const scoreSlice = createSlice({
     name: 'score',
     initialState,
     reducers: {
-        testToggler: (state) => {
-            if (state.row1[0] === 1) {
-                state.row1[0] = 0
-            } else {
-                state.row1[0] = 1
-            }
+        toggleBoxValue: (state, action) => {
+            // Payload should be an object like this: {rowSpot: 'row1', numberIndex: 3}
+            const {payload} = action;
+            const {rowSpot, numberIndex} = payload;
+
+            if (state[rowSpot][numberIndex] === 1) {
+                state[rowSpot][numberIndex] = 0
+            } else {state[rowSpot][numberIndex] = 1}
+        },
+        resetBoard: (state) => { //doesn't work yet
+            state = initialState;
         }
     }
 })
 
-export const {testToggler} = scoreSlice.actions;
+export const { toggleBoxValue, resetBoard } = scoreSlice.actions;
 
 export default scoreSlice.reducer
+
+// stored in redux store.
+// stored in state.score.whatever. i.e., state.score.row2[5]

@@ -3,12 +3,13 @@ import { Container, Col, Row } from "react-bootstrap";
 import NumberBox from "./NumberBox";
 import TotalsBox from "./TotalsBox";
 
-
 import { useSelector, useDispatch } from "react-redux";
-import { testToggler } from "../utils/scoreSlice";
+import { toggleBoxValue, resetBoard } from "../utils/scoreSlice";
 
 const Board = () => {
     const state = useSelector((state) => state);
+    const {score} = state;
+    const {row1, row2, row3, row4, penalties} = score;
     const dispatch = useDispatch();
     
     const [row1box1, setrow1box1] = useState(0);
@@ -115,7 +116,7 @@ const Board = () => {
     }
 
     //Rows scores from state stored in array -- one for each row
-    const row1Array = [row1box1, row1box2, row1box3, row1box4, row1box5, row1box6, row1box7, row1box8, row1box9, row1box10, row1box11, row1box12]
+    const row1Array = [row1[0], row1box2, row1box3, row1box4, row1box5, row1box6, row1box7, row1box8, row1box9, row1box10, row1box11, row1box12]
     const row2Array = [row2box1, row2box2, row2box3, row2box4, row2box5, row2box6, row2box7, row2box8, row2box9, row2box10, row2box11, row2box12]
     const row3Array = [row3box1, row3box2, row3box3, row3box4, row3box5, row3box6, row3box7, row3box8, row3box9, row3box10, row3box11, row3box12]
     const row4Array = [row4box1, row4box2, row4box3, row4box4, row4box5, row4box6, row4box7, row4box8, row4box9, row4box10, row4box11, row4box12]
@@ -139,68 +140,68 @@ const Board = () => {
             setterFunction(1);
         }
     }
-  
+
     return (
     <Container className="light-gray-bg">
       <Row className="main-red p-2">
         <Col>
-            <div onClick={() => dispatch(testToggler())} className='main-red-text'>
-                <NumberBox value={state.score.row1[0]} display={state.score.row1[0]}/>
+            <div onClick={() => dispatch(toggleBoxValue({rowSpot: 'row1', numberIndex: 0}))} className='main-red-text'>
+                <NumberBox value={row1[0]} display={row1[0]}/>
             </div>
         </Col>
         <Col>
             <div onClick={() => toggler(row1box2, setrow1box2)} className='main-red-text'>
-                <NumberBox value={row1box2} display="3" />
+                <NumberBox value={row1[1]} display={row1[1]} />
             </div>
         </Col>
         <Col>
             <div onClick={() => toggler(row1box3, setrow1box3)} className='main-red-text'>
-                <NumberBox value={row1box3} display="4" />
+                <NumberBox value={row1[2]} display={row1[2]} />
             </div>
         </Col>
         <Col>
             <div onClick={() => toggler(row1box4, setrow1box4)} className='main-red-text'>
-                <NumberBox value={row1box4} display="5" />
+                <NumberBox value={row1[3]} display={row1[3]} />
             </div>
         </Col>
         <Col>
             <div onClick={() => toggler(row1box5, setrow1box5)} className='main-red-text'>
-                <NumberBox value={row1box5} display="6" />
+                <NumberBox value={row1[4]} display={row1[4]} />
             </div>
         </Col>
         <Col>
             <div onClick={() => toggler(row1box6, setrow1box6)} className='main-red-text'>
-                <NumberBox value={row1box6} display="7" />
+                <NumberBox value={row1[5]} display={row1[5]} />
             </div>
         </Col>
         <Col>
             <div onClick={() => toggler(row1box7, setrow1box7)} className='main-red-text'>
-                <NumberBox value={row1box7} display="8" />
+                <NumberBox value={row1[6]} display="8" />
             </div>
         </Col>
         <Col>
             <div onClick={() => toggler(row1box8, setrow1box8)} className='main-red-text'>
-                <NumberBox value={row1box8} display="9" />
+                <NumberBox value={row1[7]} display="9" />
             </div>
         </Col>
         <Col>
             <div onClick={() => toggler(row1box9, setrow1box9)} className='main-red-text'>
-                <NumberBox value={row1box9} display="10" />
+                <NumberBox value={row1[8]} display="10" />
             </div>
         </Col>
         <Col>
             <div onClick={() => toggler(row1box10, setrow1box10)} className='main-red-text'>
-                <NumberBox value={row1box10} display="11" />
+                <NumberBox value={row1[9]} display="11" />
             </div>
         </Col>
         <Col>
             <div onClick={() => toggler(row1box11, setrow1box11)} className='main-red-text'>
-                <NumberBox value={row1box11} display="12" />
+                <NumberBox value={row1[10]} display="12" />
             </div>
         </Col>
         <Col>
             <div onClick={() => toggler(row1box12, setrow1box12)} className='main-red-text'>
-                <NumberBox value={row1box12} display="🔒" />
+                <NumberBox value={row1[11]} display="🔒" />
             </div>
         </Col>
       </Row>
@@ -409,7 +410,7 @@ const Board = () => {
         <Col>Total: <TotalsBox value={scoreRow(row1Array) + scoreRow(row2Array) + scoreRow(row3Array) + scoreRow(row4Array)}/></Col>
       </Row>
       <Row className="dark-gray-bg">
-        <button onClick={reset}>Reset Board</button>
+        <button onClick={() => dispatch(resetBoard())}>Reset Board</button>
       </Row>
     </Container>
   );
