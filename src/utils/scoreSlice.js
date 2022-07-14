@@ -21,8 +21,12 @@ export const scoreSlice = createSlice({
                 state[rowSpot][numberIndex] = 0
             } else {state[rowSpot][numberIndex] = 1}
         },
-        resetBoard: (state) => { //doesn't work yet
-            state = initialState;
+        resetBoard: (state) => { // Just "state = initialState" didn't work. Seems to work separated out though.
+            state.row1 = initialState.row1;
+            state.row2 = initialState.row2;
+            state.row3 = initialState.row3;
+            state.row4 = initialState.row4;
+            state.penalties = initialState.penalties;
         }
     }
 })
