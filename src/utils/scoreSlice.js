@@ -13,11 +13,11 @@ export const scoreSlice = createSlice({
     initialState,
     reducers: {
         toggleBoxValue: (state, action) => {
-            // Payload should be an object like this: {rowSpot: 'row1', numberIndex: 3}
+            // Use a payload like this: {rowSpot: 'row1', numberIndex: 3} to access row 1, 4th number (which is 5 because it starts at 2)
             const {payload} = action;
             const {rowSpot, numberIndex} = payload;
 
-            if (state[rowSpot][numberIndex] === 1) {
+            if (state[rowSpot][numberIndex]) {
                 state[rowSpot][numberIndex] = 0
             } else {state[rowSpot][numberIndex] = 1}
         },

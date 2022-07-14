@@ -1,5 +1,3 @@
-import React from 'react'
-
 const NumberBox = ({value}) => {
   if (!value) { //if the box has NOT been checked, it's value in the array will be 0
     return <div className='number-box-square'>{value}</div>
