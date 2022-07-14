@@ -1,4 +1,4 @@
-import { Container, Col, Row } from "react-bootstrap";
+import { Container, Col, Row, Button } from "react-bootstrap";
 import NumberBox from "./NumberBox";
 import TotalsBox from "./TotalsBox";
 import PenaltyBox from "./PenaltyBox";
@@ -7,8 +7,10 @@ import LockBox from "./LockBox";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleBoxValue, resetBoard } from "../utils/scoreSlice";
 
+import { ActionCreators } from "redux-undo";
+
 const Board = () => {
-    const score = useSelector((state) => state.score);
+    const score = useSelector((state) => state.score.present);
     const {row1, row2, row3, row4, penalties} = score;
     const dispatch = useDispatch();
 
@@ -26,7 +28,7 @@ const Board = () => {
     <Container className="light-gray-bg">
         <Row className="main-red p-2">
             {row1.map((current, index) => {
-                    return <Col>
+                    return <Col key={index}>
                         <div onClick = {() => dispatch(toggleBoxValue({rowSpot: 'row1', numberIndex: index}))} className='main-red-text'>
                             <NumberBox value={current} display={`${index+2}`} />
                         </div>
@@ -42,7 +44,7 @@ const Board = () => {
 
       <Row className="main-yellow p-2">
         {row2.map((current, index) => {
-                    return <Col>
+                    return <Col key={index}>
                         <div onClick = {() => dispatch(toggleBoxValue({rowSpot: 'row2', numberIndex: index}))} className='main-yellow-text'>
                             <NumberBox value={current} display={`${index+2}`} />
                         </div>
@@ -58,7 +60,7 @@ const Board = () => {
 
         <Row className="main-green p-2">
         {row3.map((current, index) => {
-                    return <Col>
+                    return <Col key={index}>
                         <div onClick = {() => dispatch(toggleBoxValue({rowSpot: 'row3', numberIndex: index}))} className='main-green-text'>
                             <NumberBox value={current} display={`${index+2}`} />
                         </div>
@@ -74,7 +76,7 @@ const Board = () => {
 
         <Row className="main-blue p-2">
             {row4.map((current, index) => {
-                    return <Col>
+                    return <Col key={index}>
                         <div onClick = {() => dispatch(toggleBoxValue({rowSpot: 'row4', numberIndex: index}))} className='main-blue-text'>
                             <NumberBox value={current} display={`${index+2}`} />
                         </div>
@@ -131,6 +133,18 @@ const Board = () => {
 
       <Row className="dark-gray-bg">
         <button onClick={() => dispatch(resetBoard())}>Reset Board</button>
+      </Row>
+      <Row>
+        <Col>
+            <div onClick={() => dispatch(ActionCreators.undo())}>
+                <Button>Undo</Button>
+            </div>
+        </Col>
+        <Col>
+            <div onClick={() => dispatch(ActionCreators.redo())}>
+                <Button>Redo</Button>
+            </div>
+        </Col>
       </Row>
     </Container>
   );
