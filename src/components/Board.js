@@ -20,9 +20,9 @@ const Board = () => {
         reddice: 1,
         whitedice1: 1,
         whitedice2: 1
-    })
+    });
 
-    const random6 = () => Math.floor(Math.random()*6+1)
+    const random6 = () => Math.floor(Math.random()*6+1);
 
     const rolldice = () => {
         setDiceValues({
@@ -32,7 +32,7 @@ const Board = () => {
             reddice: random6(),
             whitedice1: random6(),
             whitedice2: random6()
-    })}
+    })};
 
     const score = useSelector((state) => state.score.present); //Pull "score" object out of present version of store
     const {row1, row2, row3, row4, penalties} = score; //Pull each property out of score so we're not typing score.row1 everywhere
@@ -47,7 +47,7 @@ const Board = () => {
         };
         score += rowArray[10]; // Essentially adds the "12" square an extra time to account for the "Lock" box
         return score  // returning the final score for "rowArray"
-    }
+    };
 
     return (
     <Container className="light-gray-bg">
@@ -85,13 +85,12 @@ const Board = () => {
 
         <Row className="main-green p-2">
         {row3.map((current, index, arr) => {
-                    return <Col key={index}>
-                        <div onClick = {() => dispatch(toggleBoxValue({rowSpot: 'row3', numberIndex: index}))} className='main-green-text'>
-                            <NumberBox value={current} display={`${arr.length-index+1}`} /> {/* Makes the numbers appear 12 -> 2 instead*/}
-                        </div>
-                    </Col>
-                }
-            )}
+            return <Col key={index}>
+                <div onClick = {() => dispatch(toggleBoxValue({rowSpot: 'row3', numberIndex: index}))} className='main-green-text'>
+                    <NumberBox value={current} display={`${arr.length-index+1}`} /> {/* Makes the numbers appear 12 -> 2 instead*/}
+                </div>
+            </Col>
+        })}
             <Col>
                 <div className='main-green-text' >
                     <LockBox value={row3[10]}/>
@@ -117,7 +116,8 @@ const Board = () => {
         </Row>
 
         <Row>
-            <Col>Penalties</Col>
+            <Col xs='0' md='3' lg='5' xl='7' />
+            <Col>Penalties:</Col>
             <Col>
                 <div onClick={() => dispatch(toggleBoxValue({rowSpot: 'penalties', numberIndex: 0}))}>
                     <PenaltyBox value={penalties[0]}/>
@@ -173,7 +173,7 @@ const Board = () => {
       </Row>
       <Row>
         <Col>
-            <div onClick={rolldice}>Roll the dice</div>
+            <div onClick={rolldice} className='pseudo-button'>Roll the dice</div>
         </Col>
       </Row>
       <Row>
