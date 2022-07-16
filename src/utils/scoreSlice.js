@@ -17,9 +17,11 @@ export const scoreSlice = createSlice({
             const {payload} = action;
             const {rowSpot, numberIndex} = payload;
 
-            if (state[rowSpot][numberIndex]) {
-                state[rowSpot][numberIndex] = 0
-            } else {state[rowSpot][numberIndex] = 1}
+            if ((numberIndex === 10 && (state[rowSpot].reduce((prev, current) => prev + current)) > 4) || numberIndex < 10) {
+                if (state[rowSpot][numberIndex]) {
+                    state[rowSpot][numberIndex] = 0
+                } else {state[rowSpot][numberIndex] = 1}
+            }
         },
         resetBoard: (state) => { // Just "state = initialState" didn't work. Seems to work separated out though.
             state.row1 = initialState.row1;
@@ -27,6 +29,11 @@ export const scoreSlice = createSlice({
             state.row3 = initialState.row3;
             state.row4 = initialState.row4;
             state.penalties = initialState.penalties;
+        },
+        toggleLastBoxValue: (state, action) => {
+            const {payload} = action;
+            const {rowSpot, numberIndex} = payload;
+
         }
     }
 })
