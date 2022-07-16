@@ -116,7 +116,37 @@ const Board = () => {
         </Row>
 
         <Row>
-            <Col xs='0' md='3' lg='5' xl='7' />
+            <Col xs='0' md='3' lg='5' xl='7' >
+                <Row className='text-center pt-2'>
+                    <Col className='top-rounded-half'>1x</Col>
+                    <Col className='top-rounded-half'>2x</Col>
+                    <Col className='top-rounded-half'>3x</Col>
+                    <Col className='top-rounded-half'>4x</Col>
+                    <Col className='top-rounded-half'>5x</Col>
+                    <Col className='top-rounded-half'>6x</Col>
+                    <Col className='top-rounded-half'>7x</Col>
+                    <Col className='top-rounded-half'>8x</Col>
+                    <Col className='top-rounded-half'>9x</Col>
+                    <Col className='top-rounded-half'>10x</Col>
+                    <Col className='top-rounded-half'>11x</Col>
+                    <Col className='top-rounded-half'>12x</Col>
+                </Row>
+                <Row className='text-center'>
+                    <Col className='bot-rounded-half'>1</Col>
+                    <Col className='bot-rounded-half'>3</Col>
+                    <Col className='bot-rounded-half'>6</Col>
+                    <Col className='bot-rounded-half'>10</Col>
+                    <Col className='bot-rounded-half'>15</Col>
+                    <Col className='bot-rounded-half'>21</Col>
+                    <Col className='bot-rounded-half'>28</Col>
+                    <Col className='bot-rounded-half'>36</Col>
+                    <Col className='bot-rounded-half'>45</Col>
+                    <Col className='bot-rounded-half'>55</Col>
+                    <Col className='bot-rounded-half'>66</Col>
+                    <Col className='bot-rounded-half'>78</Col>
+
+                </Row>
+            </Col>
             <Col>Penalties:</Col>
             <Col>
                 <div onClick={() => dispatch(toggleBoxValue({rowSpot: 'penalties', numberIndex: 0}))}>
