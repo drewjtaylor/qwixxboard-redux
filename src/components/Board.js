@@ -22,28 +22,31 @@ const Board = () => {
         whitedice2: 1
     })
 
+    const random6 = () => Math.floor(Math.random()*6+1)
+
     const rolldice = () => {
         setDiceValues({
-            bluedice: (Math.floor(Math.random()*6)),
-            yellowdice: (Math.floor(Math.random()*6)),
-            greendice: (Math.floor(Math.random()*6)),
-            reddice: (Math.floor(Math.random()*6)),
-            whitedice1: (Math.floor(Math.random()*6)),
-            whitedice2: (Math.floor(Math.random()*6))
+            bluedice: random6(),
+            yellowdice: random6(),
+            greendice: random6(),
+            reddice: random6(),
+            whitedice1: random6(),
+            whitedice2: random6()
     })}
 
-    const score = useSelector((state) => state.score.present);
-    const {row1, row2, row3, row4, penalties} = score;
-    const dispatch = useDispatch();
+    const score = useSelector((state) => state.score.present); //Pull "score" object out of present version of store
+    const {row1, row2, row3, row4, penalties} = score; //Pull each property out of score so we're not typing score.row1 everywhere
+    const dispatch = useDispatch();  // Standard abstraction of useDispatch()
 
-    const scoreRow = (rowArray) => { //function takes the array for a given row (such as "row1")
+    const scoreRow = (rowArray) => { // function takes the array for a given row (such as "row1")
         let score = 0;
-        let numberofmarks = rowArray.reduce((prev, current) => prev + current);  //reducer supplies us with the total of "marks" (boxes that have a value of 1)
-        while (numberofmarks > 0) {  //for however many have a "1", we add the total number of marks to the score for this row
+        let numberofmarks = rowArray.reduce((prev, current) => prev + current);  // reducer supplies us with the total of "marks" (boxes that have a value of 1)
+        while (numberofmarks > 0) {  // for however many have a "1", we add the total number of marks to the score for this row
             score += numberofmarks;
             numberofmarks--;
         };
-        return score  // returning the final score
+        score += rowArray[10]; // Essentially adds the "12" square an extra time to account for the "Lock" box
+        return score  // returning the final score for "rowArray"
     }
 
     return (
@@ -81,10 +84,10 @@ const Board = () => {
         </Row>
 
         <Row className="main-green p-2">
-        {row3.map((current, index) => {
+        {row3.map((current, index, arr) => {
                     return <Col key={index}>
                         <div onClick = {() => dispatch(toggleBoxValue({rowSpot: 'row3', numberIndex: index}))} className='main-green-text'>
-                            <NumberBox value={current} display={`${index+2}`} />
+                            <NumberBox value={current} display={`${arr.length-index+1}`} /> {/* Makes the numbers appear 12 -> 2 instead*/}
                         </div>
                     </Col>
                 }
@@ -97,10 +100,10 @@ const Board = () => {
         </Row>
 
         <Row className="main-blue p-2">
-            {row4.map((current, index) => {
+            {row4.map((current, index, arr) => {
                     return <Col key={index}>
                         <div onClick = {() => dispatch(toggleBoxValue({rowSpot: 'row4', numberIndex: index}))} className='main-blue-text'>
-                            <NumberBox value={current} display={`${index+2}`} />
+                            <NumberBox value={current} display={`${arr.length-index+1}`} />
                         </div>
                     </Col>
                     }
@@ -175,16 +178,16 @@ const Board = () => {
       </Row>
       <Row>
         <Col>
-            <DiceBlock color='blue' value={diceValues.bluedice}/>
-        </Col>
-        <Col>
-            <DiceBlock color='green' value={diceValues.greendice}/>
+            <DiceBlock color='red' value={diceValues.reddice}/>
         </Col>
         <Col>
             <DiceBlock color='yellow' value={diceValues.yellowdice}/>
         </Col>
         <Col>
-            <DiceBlock color='red' value={diceValues.reddice}/>
+            <DiceBlock color='green' value={diceValues.greendice}/>
+        </Col>
+        <Col>
+            <DiceBlock color='blue' value={diceValues.bluedice}/>
         </Col>
         <Col>
             <DiceBlock color='white' value={diceValues.whitedice1}/>
