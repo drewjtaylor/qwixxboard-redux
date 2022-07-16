@@ -1,15 +1,37 @@
+import { useState } from 'react';
 import { Container, Col, Row, Button } from "react-bootstrap";
 import NumberBox from "./NumberBox";
 import TotalsBox from "./TotalsBox";
 import PenaltyBox from "./PenaltyBox";
 import LockBox from "./LockBox";
+import DiceBlock from "./DiceBlock";
 
 import { useSelector, useDispatch } from "react-redux";
 import { toggleBoxValue, resetBoard } from "../utils/scoreSlice";
 
 import { ActionCreators } from "redux-undo";
 
+
 const Board = () => {
+    const [diceValues, setDiceValues] = useState({
+        bluedice: 1,
+        yellowdice: 1,
+        greendice: 1,
+        reddice: 1,
+        whitedice1: 1,
+        whitedice2: 1
+    })
+
+    const rolldice = () => {
+        setDiceValues({
+            bluedice: (Math.floor(Math.random()*6)),
+            yellowdice: (Math.floor(Math.random()*6)),
+            greendice: (Math.floor(Math.random()*6)),
+            reddice: (Math.floor(Math.random()*6)),
+            whitedice1: (Math.floor(Math.random()*6)),
+            whitedice2: (Math.floor(Math.random()*6))
+    })}
+
     const score = useSelector((state) => state.score.present);
     const {row1, row2, row3, row4, penalties} = score;
     const dispatch = useDispatch();
@@ -144,6 +166,31 @@ const Board = () => {
             <div onClick={() => dispatch(ActionCreators.redo())}>
                 <Button>Redo</Button>
             </div>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+            <div onClick={rolldice}>Roll the dice</div>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+            <DiceBlock color='blue' value={diceValues.bluedice}/>
+        </Col>
+        <Col>
+            <DiceBlock color='green' value={diceValues.greendice}/>
+        </Col>
+        <Col>
+            <DiceBlock color='yellow' value={diceValues.yellowdice}/>
+        </Col>
+        <Col>
+            <DiceBlock color='red' value={diceValues.reddice}/>
+        </Col>
+        <Col>
+            <DiceBlock color='white' value={diceValues.whitedice1}/>
+        </Col>
+        <Col>
+            <DiceBlock color='white' value={diceValues.whitedice2}/>
         </Col>
       </Row>
     </Container>

@@ -72,3 +72,62 @@
     font-size: 1.5em;
     cursor: pointer;
 }
+
+.bluedice {
+    background-image: url('../src/assets/blue-dice.png');
+    width: 110px;
+    height: 110px;
+    position: absolute;
+}
+
+.greendice {
+    background-image: url('../src/assets/green-dice.png');
+    width: 110px;
+    height: 110px;
+    position: absolute;
+}
+
+.yellowdice {
+    background-image: url('../src/assets/yellow-dice.png');
+    width: 110px;
+    height: 110px;
+    position: absolute;
+}
+
+.reddice {
+    background-image: url('../src/assets/red-dice.png');
+    width: 110px;
+    height: 110px;
+    position: absolute;
+}
+
+.whitedice {
+    background-image: url('../src/assets/white-dice.png');
+    width: 110px;
+    height: 110px;
+    position: absolute;
+}
+
+.dice1 {
+    background-position: 0px 0px;
+}
+
+.dice2 {
+    background-position: -110px 0px;
+}
+
+.dice3 {
+    background-position: -220px 0px;
+}
+
+.dice4 {
+    background-position: -330px 0px;
+}
+
+.dice5 {
+    background-position: -440px 0px;
+}
+
+.dice6 {
+    background-position: -550px 0px;
+}
