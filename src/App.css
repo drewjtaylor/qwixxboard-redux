@@ -131,3 +131,7 @@
 .dice6 {
     background-position: -550px 0px;
 }
+
+.pseudo-button {
+    cursor: pointer;
+}
