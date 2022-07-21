@@ -40,12 +40,11 @@ const Board = () => {
 
     const scoreRow = (rowArray) => { // function takes the array for a given row (such as "row1")
         let score = 0;
-        let numberofmarks = rowArray.reduce((prev, current) => prev + current);  // reducer supplies us with the total of "marks" (boxes that have a value of 1)
+        let numberofmarks = (rowArray.reduce((prev, current) => prev + current)) + rowArray[10];  // reducer supplies us with the total of "marks" (boxes that have a value of 1) and adds the last box an extra time to account for the "lock" box
         while (numberofmarks > 0) {  // for however many have a "1", we add the total number of marks to the score for this row
             score += numberofmarks;
             numberofmarks--;
         };
-        score += rowArray[10]; // Essentially adds the "12" square an extra time to account for the "Lock" box
         return score  // returning the final score for "rowArray"
     };
 
@@ -115,36 +114,36 @@ const Board = () => {
             </Col>
         </Row>
 
+        Score table:
         <Row>
-            <Col xs='0' md='3' lg='5' xl='7' >
+            <Col xs={12} lg='12' xl='7' >
                 <Row className='text-center pt-2'>
-                    <Col className='top-rounded-half'>1x</Col>
-                    <Col className='top-rounded-half'>2x</Col>
-                    <Col className='top-rounded-half'>3x</Col>
-                    <Col className='top-rounded-half'>4x</Col>
-                    <Col className='top-rounded-half'>5x</Col>
-                    <Col className='top-rounded-half'>6x</Col>
-                    <Col className='top-rounded-half'>7x</Col>
-                    <Col className='top-rounded-half'>8x</Col>
-                    <Col className='top-rounded-half'>9x</Col>
-                    <Col className='top-rounded-half'>10x</Col>
-                    <Col className='top-rounded-half'>11x</Col>
-                    <Col className='top-rounded-half'>12x</Col>
+                    <Col className='top-indicator'>1x</Col>
+                    <Col className='top-indicator'>2x</Col>
+                    <Col className='top-indicator'>3x</Col>
+                    <Col className='top-indicator'>4x</Col>
+                    <Col className='top-indicator'>5x</Col>
+                    <Col className='top-indicator'>6x</Col>
+                    <Col className='top-indicator'>7x</Col>
+                    <Col className='top-indicator'>8x</Col>
+                    <Col className='top-indicator'>9x</Col>
+                    <Col className='top-indicator'>10x</Col>
+                    <Col className='top-indicator'>11x</Col>
+                    <Col className='top-indicator'>12x</Col>
                 </Row>
                 <Row className='text-center'>
-                    <Col className='bot-rounded-half'>1</Col>
-                    <Col className='bot-rounded-half'>3</Col>
-                    <Col className='bot-rounded-half'>6</Col>
-                    <Col className='bot-rounded-half'>10</Col>
-                    <Col className='bot-rounded-half'>15</Col>
-                    <Col className='bot-rounded-half'>21</Col>
-                    <Col className='bot-rounded-half'>28</Col>
-                    <Col className='bot-rounded-half'>36</Col>
-                    <Col className='bot-rounded-half'>45</Col>
-                    <Col className='bot-rounded-half'>55</Col>
-                    <Col className='bot-rounded-half'>66</Col>
-                    <Col className='bot-rounded-half'>78</Col>
-
+                    <Col className='bot-indicator'>1</Col>
+                    <Col className='bot-indicator'>3</Col>
+                    <Col className='bot-indicator'>6</Col>
+                    <Col className='bot-indicator'>10</Col>
+                    <Col className='bot-indicator'>15</Col>
+                    <Col className='bot-indicator'>21</Col>
+                    <Col className='bot-indicator'>28</Col>
+                    <Col className='bot-indicator'>36</Col>
+                    <Col className='bot-indicator'>45</Col>
+                    <Col className='bot-indicator'>55</Col>
+                    <Col className='bot-indicator'>66</Col>
+                    <Col className='bot-indicator'>78</Col>
                 </Row>
             </Col>
             <Col>Penalties:</Col>
