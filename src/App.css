@@ -62,9 +62,9 @@
 }
 
 .number-box-square {
-    height: 3em;
-    line-height: 3em;
-    width: 3em;
+    height: 2em;
+    line-height: 2em;
+    width: 2em;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.637);
     margin: 5px;
@@ -137,16 +137,14 @@
     cursor: pointer;
 }
 
-.top-rounded-half {
+.top-indicator {
     background-color: white;
     border-color: black;
     border: 1px solid;
-    border-radius: 50% 50% 0 0;
 }
 
-.bot-rounded-half {
+.bot-indicator {
     background-color: white;
     border-color: black;
     border: 1px solid;
-    border-radius: 0 0 50% 50%;
 }
