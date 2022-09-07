@@ -46,10 +46,6 @@ export const scoreSlice = createSlice({
       state.row4 = initialState.row4;
       state.penalties = initialState.penalties;
     },
-    toggleLastBoxValue: (state, action) => {
-      const { payload } = action;
-      const { rowSpot, numberIndex } = payload;
-    },
   },
 });
 

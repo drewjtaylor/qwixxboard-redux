@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Col, Row, Button } from "react-bootstrap";
+import { Container, Col, Row, Button, Table } from "react-bootstrap";
 import NumberBox from "./NumberBox";
 import TotalsBox from "./TotalsBox";
 import PenaltyBox from "./PenaltyBox";
@@ -115,37 +115,37 @@ const Board = () => {
         </Row>
 
         Score table:
+        <Table className='score-table'>
+            <tr>
+                <td>1x</td>
+                <td>2x</td>
+                <td>3x</td>
+                <td>4x</td>
+                <td>5x</td>
+                <td>6x</td>
+                <td>7x</td>
+                <td>8x</td>
+                <td>9x</td>
+                <td>10x</td>
+                <td>11x</td>
+                <td>12x</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>3</td>
+                <td>6</td>
+                <td>10</td>
+                <td>15</td>
+                <td>21</td>
+                <td>28</td>
+                <td>36</td>
+                <td>45</td>
+                <td>55</td>
+                <td>66</td>
+                <td>78</td>
+            </tr>
+        </Table>
         <Row>
-            <Col xs={12} lg='12' xl='7' >
-                <Row className='text-center pt-2'>
-                    <Col className='top-indicator'>1x</Col>
-                    <Col className='top-indicator'>2x</Col>
-                    <Col className='top-indicator'>3x</Col>
-                    <Col className='top-indicator'>4x</Col>
-                    <Col className='top-indicator'>5x</Col>
-                    <Col className='top-indicator'>6x</Col>
-                    <Col className='top-indicator'>7x</Col>
-                    <Col className='top-indicator'>8x</Col>
-                    <Col className='top-indicator'>9x</Col>
-                    <Col className='top-indicator'>10x</Col>
-                    <Col className='top-indicator'>11x</Col>
-                    <Col className='top-indicator'>12x</Col>
-                </Row>
-                <Row className='text-center'>
-                    <Col className='bot-indicator'>1</Col>
-                    <Col className='bot-indicator'>3</Col>
-                    <Col className='bot-indicator'>6</Col>
-                    <Col className='bot-indicator'>10</Col>
-                    <Col className='bot-indicator'>15</Col>
-                    <Col className='bot-indicator'>21</Col>
-                    <Col className='bot-indicator'>28</Col>
-                    <Col className='bot-indicator'>36</Col>
-                    <Col className='bot-indicator'>45</Col>
-                    <Col className='bot-indicator'>55</Col>
-                    <Col className='bot-indicator'>66</Col>
-                    <Col className='bot-indicator'>78</Col>
-                </Row>
-            </Col>
             <Col>Penalties:</Col>
             <Col>
                 <div onClick={() => dispatch(toggleBoxValue({rowSpot: 'penalties', numberIndex: 0}))}>
@@ -185,7 +185,7 @@ const Board = () => {
         <Col>Total: <TotalsBox value={scoreRow(row1) + scoreRow(row2) + scoreRow(row3) + scoreRow(row4) - (5*(penalties[0] + penalties[1] + penalties[2] + penalties[3]))}/></Col>
       </Row>
 
-      <Row className="dark-gray-bg">
+      <Row className="dark-gray-bg my-2">
         <button onClick={() => dispatch(resetBoard())}>Reset Board</button>
       </Row>
       <Row>
@@ -202,7 +202,7 @@ const Board = () => {
       </Row>
       <Row>
         <Col>
-            <div onClick={rolldice} className='pseudo-button'>Roll the dice</div>
+            <div onClick={rolldice} className='pseudo-button col-1 mx-auto my-3'><Button>Roll the dice</Button></div>
         </Col>
       </Row>
       <Row>

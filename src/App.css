@@ -137,14 +137,12 @@
     cursor: pointer;
 }
 
-.top-indicator {
+.score-table {
     background-color: white;
-    border-color: black;
-    border: 1px solid;
 }
 
-.bot-indicator {
-    background-color: white;
-    border-color: black;
-    border: 1px solid;
+.score-table td {
+    text-align: center;
+    border: solid 1px;
+    max-width: 0px; /* Makes the cells equal widths*/
 }
