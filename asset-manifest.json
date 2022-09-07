@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/qwixxboard-redux/static/css/main.7162dcb7.css",
-    "main.js": "/qwixxboard-redux/static/js/main.a7efe75f.js",
+    "main.js": "/qwixxboard-redux/static/js/main.634f4cb4.js",
     "static/js/787.fb4c2c38.chunk.js": "/qwixxboard-redux/static/js/787.fb4c2c38.chunk.js",
     "static/media/yellow-dice.png": "/qwixxboard-redux/static/media/yellow-dice.88a7bdfa9ee5e0aef531.png",
     "static/media/green-dice.png": "/qwixxboard-redux/static/media/green-dice.8d84498bc7797bf61f9a.png",
     "index.html": "/qwixxboard-redux/index.html",
     "main.7162dcb7.css.map": "/qwixxboard-redux/static/css/main.7162dcb7.css.map",
-    "main.a7efe75f.js.map": "/qwixxboard-redux/static/js/main.a7efe75f.js.map",
+    "main.634f4cb4.js.map": "/qwixxboard-redux/static/js/main.634f4cb4.js.map",
     "787.fb4c2c38.chunk.js.map": "/qwixxboard-redux/static/js/787.fb4c2c38.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7162dcb7.css",
-    "static/js/main.a7efe75f.js"
+    "static/js/main.634f4cb4.js"
   ]
 }
