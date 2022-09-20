@@ -26,7 +26,7 @@ The detailed rules can be found [here](https://www.ultraboardgames.com/qwixx/del
 
 ## React Components
 
-With the above images in mind, this is a list of components I will probably need to create:
+With the above images in mind, this is a list of components used:
 
 - The background/board as a whole
 - Rows for each color
@@ -58,10 +58,53 @@ function scorerow(numberofmarks) {
 }
 ```
 
-## Bonus features
+## Undo
 
-There are 2 features I think would be very practical, but I am considering them low priority for now while I get ready to have a basic functioning scoreboard to turn in as a portfolio project: an "undo" button and preventing progress from getting lost if you accidentally hit refresh.
+Since this project uses Redux, and redux technically sets a brand new state with every change, you would think it shouldn't be hard to implement an undo function--and you'd be right!
 
-The undo button is ironically very doable--but to implement it programatically may be more time intensive to figure out than I'm willing to put in. Better to get it working without the "undo" feature first, but keep it in the back of my mind.
+In fact, the documentation for Redux indicates that there is a library called "redux-undo" that sets up this functionality fairly easily.
 
-As far as the page not starting over on refresh, I'm not sure if my program will be going over storing information with the client at this stage, so that may require extracurricular research or I may need to come back to it later in the program.
+The score state is kept in the store as "score". Without an undo function, it would be set in the Redux store by labeling it as follows:
+```
+export const store = configureStore({
+  reducer: {
+    score: scoreReducer,
+  }
+});
+```
+
+
+By importing the "undoable" library in the store and wrapping the scoreReducer, it makes everything in that slice of logic undoable:
+
+```
+...
+
+import undoable from 'redux-undo';
+
+export const store = configureStore({
+  reducer: {
+    score: undoable(scoreReducer),
+  }
+});
+```
+
+Then we just need to call the right function on a button:
+
+```
+...
+
+import { ActionCreators } from 'redux-undo';
+
+...
+
+<div onClick={() => dispatch(ActionCreators.undo())}>
+    <Button>Undo</Button>
+</div>
+
+<div onClick={() => dispatch(ActionCreators.redo())}>
+    <Button>Redo</Button>
+</div>
+
+```
+
+Voila! Undo/redo functionality without having to write complex code that keeps track of exactly what actions were taken in what order.

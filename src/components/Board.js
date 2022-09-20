@@ -49,7 +49,7 @@ const Board = () => {
     };
 
     return (
-    <Container className="light-gray-bg">
+    <Container className="light-gray-bg my-2">
         <Row className="main-red p-2">
             {row1.map((current, index) => {
                     return <Col key={index}>
@@ -188,21 +188,21 @@ const Board = () => {
       <Row className="dark-gray-bg my-2">
         <button onClick={() => dispatch(resetBoard())}>Reset Board</button>
       </Row>
-      <Row>
-        <Col>
+      <Row className="justify-content-center">
+        <Col xs={1}>
             <div onClick={() => dispatch(ActionCreators.undo())}>
                 <Button>Undo</Button>
             </div>
         </Col>
-        <Col>
+        <Col xs={1}>
             <div onClick={() => dispatch(ActionCreators.redo())}>
                 <Button>Redo</Button>
             </div>
         </Col>
       </Row>
-      <Row>
-        <Col>
-            <div onClick={rolldice} className='pseudo-button col-1 mx-auto my-3'><Button>Roll the dice</Button></div>
+      <Row className="justify-content-center">
+        <Col xs={1}>
+            <div onClick={rolldice} className='pseudo-button mx-auto my-3'><Button>Roll the dice</Button></div>
         </Col>
       </Row>
       <Row>
